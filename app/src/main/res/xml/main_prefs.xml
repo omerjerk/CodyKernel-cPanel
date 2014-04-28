@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="General" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="dt2w_enabled"
+            android:summary="Enable/Disable DT2W"
+            android:title="DT2W Enabled" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="s2w_enabled"
+            android:summary="Enable/Disable S2W"
+            android:title="S2W Enabled" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Swipe L2R" >
+        <CheckBoxPreference android:title="Open an App"
+            android:defaultValue="false"
+            android:key="swipe_l2r_app_enabled"
+            android:summary="Open an app on swiping left to right"/>
+
+        <ListPreference
+            android:key="swipe_l2r_app"
+            android:title="Select App"
+            android:summary="Select app that you want to be launched" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Swipe R2L" >
+        <CheckBoxPreference android:title="Open an App"
+            android:defaultValue="false"
+            android:key="swipe_r2l_app_enabled"
+            android:summary="Open an app on swiping right to left"/>
+
+        <ListPreference
+            android:key="swipe_r2l_app"
+            android:title="Select App"
+            android:summary="Select app that you want to be launched" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
