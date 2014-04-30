@@ -23,15 +23,19 @@ public class MainActivity extends PreferenceActivity implements Preference.OnPre
     private CheckBoxPreference mainS2wPref;
     private CheckBoxPreference swipeLeftToRight;
     private CheckBoxPreference swipeRightToLeft;
+    private CheckBoxPreference swipeUpToDown;
     private ListPreference swipeL2RList;
     private ListPreference swipeR2LList;
+    private ListPreference swipeU2DList;
 
     private static final String KEY_MAIN_DT2W = "dt2w_enabled";
     private static final String KEY_MAIN_S2W = "s2w_enabled";
     private static final String KEY_SWIPE_L2R = "swipe_l2r_app_enabled";
     private static final String KEY_SWIPE_R2L = "swipe_r2l_app_enabled";
+    private static final String KEY_SWIPE_U2D = "swipe_u2d_app_enabled";
     private static final String KEY_SWIPE_L2R_APP = "swipe_l2r_app";
     private static final String KEY_SWIPE_R2L_APP = "swipe_r2l_app";
+    private static final String KEY_SWIPE_U2D_APP = "swipe_u2d_app";
 
     private static final String TAG = "MainActivity";
 
@@ -53,18 +57,24 @@ public class MainActivity extends PreferenceActivity implements Preference.OnPre
         mainS2wPref = (CheckBoxPreference) findPreference(KEY_MAIN_S2W);
         swipeLeftToRight = (CheckBoxPreference) findPreference(KEY_SWIPE_L2R);
         swipeRightToLeft = (CheckBoxPreference) findPreference(KEY_SWIPE_R2L);
+        swipeUpToDown = (CheckBoxPreference) findPreference(KEY_SWIPE_U2D);
         swipeL2RList = (ListPreference) findPreference(KEY_SWIPE_L2R_APP);
         swipeR2LList = (ListPreference) findPreference(KEY_SWIPE_R2L_APP);
+        swipeU2DList = (ListPreference) findPreference(KEY_SWIPE_U2D_APP);
 
         swipeL2RList.setEntries(installedApps.keySet().toArray(new String[] {}));
         swipeR2LList.setEntries(installedApps.keySet().toArray(new String[] {}));
+        swipeU2DList.setEntries(installedApps.keySet().toArray(new String[] {}));
         swipeL2RList.setEntryValues(installedApps.values().toArray(new String[] {}));
         swipeR2LList.setEntryValues(installedApps.values().toArray(new String[] {}));
+        swipeU2DList.setEntryValues(installedApps.values().toArray(new String[] {}));
 
         swipeLeftToRight.setEnabled(mainS2wPref.isChecked());
         swipeL2RList.setEnabled(mainS2wPref.isChecked());
         swipeRightToLeft.setEnabled(mainS2wPref.isChecked());
         swipeR2LList.setEnabled(mainS2wPref.isChecked());
+        swipeUpToDown.setEnabled(mainS2wPref.isChecked());
+        swipeU2DList.setEnabled(mainS2wPref.isChecked());
 
         mainDt2wPref.setOnPreferenceChangeListener(this);
         mainS2wPref.setOnPreferenceChangeListener(this);
@@ -103,6 +113,7 @@ public class MainActivity extends PreferenceActivity implements Preference.OnPre
                 swipeL2RList.setEnabled((Boolean) o);
                 swipeRightToLeft.setEnabled((Boolean) o);
                 swipeR2LList.setEnabled((Boolean) o);
+                swipeU2DList.setEnabled((Boolean) o);
                 outputStream.writeBytes("echo 1 > /sys/android_touch/sweep2wake\n");
                 outputStream.flush();
 

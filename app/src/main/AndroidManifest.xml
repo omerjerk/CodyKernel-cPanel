@@ -28,6 +28,11 @@
                 <action android:name="in.umairkhan.codykernelcpanel.SWIPE_R2L" />
             </intent-filter>
         </receiver>
+        <receiver android:name=".receivers.SwipeUpToDownReceiver" >
+            <intent-filter >
+                <action android:name="in.umairkhan.codykernelcpanel.SWIPE_U2D" />
+            </intent-filter>
+        </receiver>
         <receiver android:name=".receivers.BootReceiver" >
             <intent-filter >
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
